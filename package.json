@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@arthurgeron/eslint-config": "^1.1.0",
+    "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-label": "^0.1.5",
+    "@radix-ui/react-scroll-area": "^0.1.4",
+    "@radix-ui/react-switch": "^0.1.5",
+    "@radix-ui/react-toast": "^0.1.1",
+    "@stitches/react": "^1.2.8",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,17 +17,23 @@
     "@types/node": "^16.11.34",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
+    "axios": "^0.27.2",
+    "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-query": "^3.39.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.6.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.0.0-rc.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "PORT=4000 next dev",
+    "prod": "PORT=4000 next start",
+    "build": "next build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "./node_modules/.bin/eslint --ignore-path .gitignore src "
   },
   "eslintConfig": {
     "extends": [

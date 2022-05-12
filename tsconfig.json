@@ -18,9 +18,42 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "baseUrl": "./",
+    "paths": {
+      "@constants": [
+        "./src/constants"
+      ],
+      "@queries": [
+        "./src/queries"
+      ],
+      "@queries/*": [
+        "./src/queries/*"
+      ],
+      "@components": [
+        "./src/components"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@stores": [
+        "./src/stores"
+      ],
+      "@stores/*": [
+        "./src/stores/*"
+      ],
+      "@stitchesConfig": [
+        "./stitches.config.ts"
+      ]
+    },
+    "incremental": true
   },
   "include": [
-    "src"
+    "src",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
