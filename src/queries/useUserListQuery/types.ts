@@ -2,7 +2,7 @@ export type ResponseData = {
   users: Array<UserData>;
 }
 
-export type UserData = {
+export interface UserData extends Record<string, string | number> {
   id: string;
   name: string;
   deleted: number;

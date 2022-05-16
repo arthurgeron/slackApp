@@ -1,17 +1,17 @@
 import { Toast } from '@components/Toast';
-import { ReactElement } from 'react';
+import { FunctionComponent } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import reportWebVitals from 'src/reportWebVitals';
 import './index.css';
 
 export const queryClient = new QueryClient();
 
-type Props = {
-  Component: ReactElement;
-  pageProps: unknown;
+type Props<T> = {
+  Component: FunctionComponent<T>;
+  pageProps: T;
 }
 
-export default function App({ Component, pageProps }: Props) {
+export default function App<T>({ Component, pageProps }: Props<T>) {
   return (<QueryClientProvider client={queryClient}>
     <Component {...pageProps} />
     <Toast />

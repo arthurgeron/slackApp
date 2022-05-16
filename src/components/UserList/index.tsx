@@ -1,6 +1,6 @@
 import { useUserListQuery } from '@queries';
 import { selectSetShouldOpen, useToastStore } from '@stores/useToastStore';
-import { useState, startTransition, useMemo,  SyntheticEvent, useEffect } from 'react';
+import { useState, startTransition, useMemo,  SyntheticEvent, useEffect, ChangeEvent } from 'react';
 import * as S from './styles';
 
 export function UserList() {
@@ -11,10 +11,12 @@ export function UserList() {
   const userListQuery = useUserListQuery(realtime);
 
 
-  function handleChange(event: SyntheticEvent) {
-    startTransition(() => {
-      setFilterData(event.target.value.replace('/', ''));
-    });
+  function handleChange(event?: SyntheticEvent) {
+    if (event) {
+      startTransition(() => {
+        setFilterData((event.target as HTMLInputElement).value.replace('/', ''));
+      });
+    }
   }
 
   useEffect(() => {
@@ -73,7 +75,7 @@ export function UserList() {
           </S.ListItemContainer>
           
         ))}
-        {userListQuery.isLoading && <S.SoloLabel>Fetchin user data</S.SoloLabel>}
+        {userListQuery.isLoading && <S.SoloLabel>Fetching user data</S.SoloLabel>}
         {userListQuery.isError && <S.SoloLabel>Could not fetch user data</S.SoloLabel>}
         {!!filterData && !filteredData.length &&  <S.SoloLabel> No results found for that filter :( </S.SoloLabel>}
       </S.Box>
